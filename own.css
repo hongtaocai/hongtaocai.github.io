@@ -106,15 +106,24 @@
 
 .hcaboutme{
     font-family: 'brandon-bold';
+    margin-bottom: 30px;
 }
 
 .hcaboutmecontent {
     font-family: 'sourcesanspro_re';
     color: #707070;
+    font-size: 15px;
+    margin-top: 13px;
+    margin-bottom: 0;
+}
+
+.hcworkcontent {
+    font-family: 'sourcesanspro_re';
+    color: #707070;
     font-size: 16px;
     line-height: 1.6em;
     margin-top: 25px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .hcfindme{
