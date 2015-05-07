@@ -2,112 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50569e31-acf5-4d8d-9c8e-30afbb4d3e2e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/examples/assets/image1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/examples/assets/image2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/league-gothic/league-gothic.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/league-gothic/league-gothic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/league-gothic/league-gothic.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/img/pattern1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/img/patterns.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro-italic.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro-italic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro-italic.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro-semibold.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro-semibold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro-semibold.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro-semibolditalic.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro-semibolditalic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro-semibolditalic.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/CONTRIBUTING.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/Gruntfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/league-gothic/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/examples/barebones.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/beige.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/source/beige.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/black.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/source/black.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/blood.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/source/blood.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/js/classList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/multiplex/client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/notes-server/client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/examples/embedded-media.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/markdown/example.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/markdown/example.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/js/head.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/highlight/highlight.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/js/html5shiv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/multiplex/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/notes-server/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/index_bak.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/league-gothic/league-gothic.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/league.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/source/league.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/leap/leap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/markdown/markdown.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/markdown/marked.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/multiplex/master.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/examples/math.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/math/math.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/template/mixins.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/moon.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/source/moon.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/night.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/source/night.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/notes/notes.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/notes-server/notes.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/notes/notes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/print/paper.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/print/pdf.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/print-pdf/print-pdf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/qunit-1.12.0.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/qunit-1.12.0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/remotes/remotes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/reveal.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/js/reveal.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/reveal.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/search/search.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/serif.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/source/serif.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/template/settings.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/simple.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/source/simple.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/sky.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/source/sky.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/examples/slide-backgrounds.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/solarized.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/source/solarized.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/font/source-sans-pro/source-sans-pro.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/test-markdown-element-attributes.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/test-markdown-element-attributes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/test-markdown-slide-attributes.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/test-markdown-slide-attributes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/test-markdown.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/test-markdown.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/test-pdf.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/test-pdf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/test.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/test/test.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/template/theme.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/white.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/css/theme/source/white.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/lib/css/zenburn.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitcoin/plugin/zoom-js/zoom.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/contact.html" afterPath="$PROJECT_DIR$/contact.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/own.css" afterPath="$PROJECT_DIR$/own.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/work.html" afterPath="$PROJECT_DIR$/work.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="hongtaocai.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -133,8 +29,8 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1609" max-vertical-offset="2205">
-              <caret line="124" column="55" selection-start-line="124" selection-start-column="55" selection-end-line="124" selection-end-column="55" />
+            <state vertical-scroll-proportion="-2.6666667" vertical-offset="806" max-vertical-offset="2205">
+              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -143,8 +39,8 @@
       <file leaf-file-name="own.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/own.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1461" max-vertical-offset="3810">
-              <caret line="119" column="16" selection-start-line="119" selection-start-column="16" selection-end-line="119" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3112" max-vertical-offset="3930">
+              <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -163,9 +59,11 @@
       <file leaf-file-name="work.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/work.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3699515" vertical-offset="1132" max-vertical-offset="5550">
-              <caret line="132" column="29" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
-              <folding />
+            <state vertical-scroll-proportion="0.53457" vertical-offset="2683" max-vertical-offset="6030">
+              <caret line="200" column="53" selection-start-line="200" selection-start-column="53" selection-end-line="200" selection-end-column="53" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -223,17 +121,17 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/own.css" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/contact.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/bitcoin/index.html" />
+        <option value="$PROJECT_DIR$/own.css" />
         <option value="$PROJECT_DIR$/work.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="44" />
+    <option name="x" value="432" />
     <option name="y" value="22" />
     <option name="width" value="1186" />
     <option name="height" value="776" />
@@ -309,7 +207,39 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hongtaocai.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hongtaocai.github.io" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="bitcoin" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hongtaocai.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hongtaocai.github.io" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bitcoin" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -365,6 +295,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bitcoin/img" />
       <recent name="$PROJECT_DIR$/bitcoin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/img" />
     </key>
   </component>
   <component name="RunManager">
@@ -791,16 +724,16 @@
       <workItem from="1409620503633" duration="1477000" />
       <workItem from="1430280796250" duration="13869000" />
       <workItem from="1430426146205" duration="40000" />
-      <workItem from="1430957370601" duration="377000" />
+      <workItem from="1430957370601" duration="2706000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15763000" />
+    <option name="totallyTimeSpent" value="18092000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="44" y="22" width="1186" height="776" extended-state="0" />
-    <editor active="false" />
+    <frame x="432" y="22" width="1186" height="776" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -820,7 +753,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19755244" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19755244" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -882,7 +815,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1807" max-vertical-offset="5550">
           <caret line="264" column="45" selection-start-line="264" selection-start-column="45" selection-end-line="264" selection-end-column="45" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -946,7 +881,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1807" max-vertical-offset="5550">
           <caret line="264" column="45" selection-start-line="264" selection-start-column="45" selection-end-line="264" selection-end-column="45" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1005,22 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/own.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1461" max-vertical-offset="3810">
-          <caret line="119" column="16" selection-start-line="119" selection-start-column="16" selection-end-line="119" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1609" max-vertical-offset="2205">
-          <caret line="124" column="55" selection-start-line="124" selection-start-column="55" selection-end-line="124" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="656">
@@ -1053,11 +974,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6666667" vertical-offset="806" max-vertical-offset="2205">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/own.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3112" max-vertical-offset="3930">
+          <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/work.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3699515" vertical-offset="1132" max-vertical-offset="5550">
-          <caret line="132" column="29" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
-          <folding />
+        <state vertical-scroll-proportion="0.53457" vertical-offset="2683" max-vertical-offset="6030">
+          <caret line="200" column="53" selection-start-line="200" selection-start-column="53" selection-end-line="200" selection-end-column="53" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

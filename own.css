@@ -220,6 +220,14 @@ html, body {
     text-align: center;
 }
 
+.htcode {
+    background-color: rgb(237,236,235);
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-size: 90%;
+    font-family: monospace;
+}
+
 .hcbottomborder{
     border-bottom: 1px solid rgb(237,236,235);
 }
