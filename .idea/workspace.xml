@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50569e31-acf5-4d8d-9c8e-30afbb4d3e2e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/work.html" afterPath="$PROJECT_DIR$/work.html" />
-    </list>
+    <list default="true" id="50569e31-acf5-4d8d-9c8e-30afbb4d3e2e" name="Default" comment="" />
     <ignored path="hongtaocai.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,10 +33,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="own.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="own.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/own.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3112" max-vertical-offset="3930">
+            <state vertical-scroll-proportion="0.30945122" vertical-offset="3112" max-vertical-offset="3930">
               <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
               <folding />
             </state>
@@ -55,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="work.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="work.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/work.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5092749" vertical-offset="1168" max-vertical-offset="6030">
-              <caret line="98" column="144" selection-start-line="98" selection-start-column="140" selection-end-line="98" selection-end-column="144" />
+            <state vertical-scroll-proportion="-6.3" vertical-offset="0" max-vertical-offset="6030">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -130,8 +128,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="17" />
-    <option name="y" value="22" />
+    <option name="x" value="516" />
+    <option name="y" value="26" />
     <option name="width" value="1186" />
     <option name="height" value="776" />
   </component>
@@ -723,15 +721,15 @@
       <workItem from="1409620503633" duration="1477000" />
       <workItem from="1430280796250" duration="13869000" />
       <workItem from="1430426146205" duration="40000" />
-      <workItem from="1430957370601" duration="2934000" />
+      <workItem from="1430957370601" duration="3868000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18320000" />
+    <option name="totallyTimeSpent" value="19254000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="17" y="22" width="1186" height="776" extended-state="0" />
+    <frame x="516" y="26" width="1186" height="776" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -981,21 +979,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/own.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3112" max-vertical-offset="3930">
-          <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/work.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5092749" vertical-offset="1168" max-vertical-offset="6030">
-          <caret line="98" column="144" selection-start-line="98" selection-start-column="140" selection-end-line="98" selection-end-column="144" />
+        <state vertical-scroll-proportion="-6.3" vertical-offset="0" max-vertical-offset="6030">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/own.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30945122" vertical-offset="3112" max-vertical-offset="3930">
+          <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
