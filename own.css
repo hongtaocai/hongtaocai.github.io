@@ -254,3 +254,17 @@ html, body {
 #map-canvas-div{
     border: solid 20px #ffffff;
 }
+
+.gm-style-cc {
+    display:none;
+}
+
+.gmnoprint a, .gmnoprint span {
+    display:none;
+}
+.gmnoprint div {
+    background:none !important;
+}
+#GMapsID div div a div img{
+    display:none;
+}
