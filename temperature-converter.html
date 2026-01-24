@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter - MiniTool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white text-gray-800 p-4 shadow-sm">
+        <div class="container mx-auto">
+            <a href="./minitools.html" class="hover:text-gray-600 flex items-center font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+                Back to MiniTool
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8 max-w-md">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Temperature Converter</h1>
+        
+        <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
+            <div class="mb-6">
+                <label for="temp-input" class="block text-sm font-medium text-gray-700 mb-2">Enter Temperature</label>
+                <input 
+                    type="number" 
+                    id="temp-input" 
+                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
+                    placeholder="Enter temperature..."
+                    step="any"
+                    value="0"
+                >
+            </div>
+            
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">From Unit</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <button 
+                        id="from-celsius" 
+                        class="px-4 py-3 bg-sky-100 text-sky-700 rounded-lg font-medium border border-sky-300 active-btn"
+                        onclick="setFromUnit('C')"
+                    >
+                        Celsius (°C)
+                    </button>
+                    <button 
+                        id="from-fahrenheit" 
+                        class="px-4 py-3 bg-gray-100 text-gray-700 rounded-lg font-medium border border-gray-300"
+                        onclick="setFromUnit('F')"
+                    >
+                        Fahrenheit (°F)
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">To Unit</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <button 
+                        id="to-celsius" 
+                        class="px-4 py-3 bg-gray-100 text-gray-700 rounded-lg font-medium border border-gray-300"
+                        onclick="setToUnit('C')"
+                    >
+                        Celsius (°C)
+                    </button>
+                    <button 
+                        id="to-fahrenheit" 
+                        class="px-4 py-3 bg-sky-100 text-sky-700 rounded-lg font-medium border border-sky-300 active-btn"
+                        onclick="setToUnit('F')"
+                    >
+                        Fahrenheit (°F)
+                    </button>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-4 mb-6 border border-gray-200">
+                <div class="text-center">
+                    <p class="text-sm text-gray-600">Result</p>
+                    <p id="result" class="text-2xl font-bold text-gray-800 mt-1">32.00 °F</p>
+                </div>
+            </div>
+            
+            <button 
+                id="convert-btn" 
+                class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-300 shadow-sm hover:shadow"
+                onclick="convertTemperature()"
+            >
+                Convert
+            </button>
+        </div>
+        
+        <div class="mt-8 text-center text-sm text-gray-600">
+            <p>Conversion Formulas:</p>
+            <p>Celsius to Fahrenheit: °F = (°C × 9/5) + 32</p>
+            <p>Fahrenheit to Celsius: °C = (°F − 32) × 5/9</p>
+        </div>
+    </div>
+
+    <script>
+        // Default conversion: Celsius to Fahrenheit
+        let fromUnit = 'C';
+        let toUnit = 'F';
+        
+        // Set active button states
+        function setActiveButtons() {
+            // Reset all buttons
+            document.querySelectorAll('.active-btn').forEach(btn => {
+                btn.classList.remove('active-btn');
+                btn.classList.remove('bg-sky-100');
+                btn.classList.remove('text-sky-700');
+                btn.classList.add('bg-gray-100');
+                btn.classList.add('text-gray-700');
+            });
+            
+            // Set active states
+            document.getElementById(`from-${fromUnit.toLowerCase()}`).classList.remove('bg-gray-100', 'text-gray-700');
+            document.getElementById(`from-${fromUnit.toLowerCase()}`).classList.add('bg-sky-100', 'text-sky-700', 'active-btn');
+            
+            document.getElementById(`to-${toUnit.toLowerCase()}`).classList.remove('bg-gray-100', 'text-gray-700');
+            document.getElementById(`to-${toUnit.toLowerCase()}`).classList.add('bg-sky-100', 'text-sky-700', 'active-btn');
+        }
+        
+        function setFromUnit(unit) {
+            fromUnit = unit;
+            setActiveButtons();
+            convertTemperature();
+        }
+        
+        function setToUnit(unit) {
+            toUnit = unit;
+            setActiveButtons();
+            convertTemperature();
+        }
+        
+        function convertTemperature() {
+            const tempInput = parseFloat(document.getElementById('temp-input').value);
+            
+            if (isNaN(tempInput)) {
+                document.getElementById('result').textContent = 'Invalid input';
+                return;
+            }
+            
+            let result;
+            let resultText;
+            
+            if (fromUnit === 'C' && toUnit === 'F') {
+                result = (tempInput * 9/5) + 32;
+                resultText = `${result.toFixed(2)} °F`;
+            } else if (fromUnit === 'F' && toUnit === 'C') {
+                result = (tempInput - 32) * 5/9;
+                resultText = `${result.toFixed(2)} °C`;
+            } else if (fromUnit === 'C' && toUnit === 'C') {
+                resultText = `${tempInput.toFixed(2)} °C`;
+            } else if (fromUnit === 'F' && toUnit === 'F') {
+                resultText = `${tempInput.toFixed(2)} °F`;
+            }
+            
+            document.getElementById('result').textContent = resultText;
+        }
+        
+        // Initialize button states
+        setActiveButtons();
+        
+        // Add event listener for input changes
+        document.getElementById('temp-input').addEventListener('input', convertTemperature);
+    </script>
+</body>
+</html>

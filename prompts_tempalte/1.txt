@@ -1,0 +1,7 @@
+I'd like to create a new page called minitools. It should stay under the root directory. I'd like it to use Tailwind CSS to have a modern and nice look. 
+On the top of the page, we should put a title as "MiniTool". 
+In the middle of the page, we should have a box which contains many small cards. 
+In the box, each row have 4 cards, and there are 5 rows. 
+The 1st card should be a Temperature Converter. After the user clicks into it, we should jump to another page that converts between F and C Temperatures.
+The 2nd card should be a unix time to human readable date converter. After the user clicks into it, we should jump to another page that converts between unix time and human readable date time.
+The new pages should also have Tailwind CSS. 
