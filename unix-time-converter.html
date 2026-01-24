@@ -101,17 +101,29 @@
             // Create a date object with the integer part
             const date = new Date(intPart * 1000);
             
+            // Format the main date/time part in New York timezone without AM/PM for manipulation
+            const year = date.toLocaleString('en-US', { timeZone: 'America/New_York', year: 'numeric' });
+            const month = date.toLocaleString('en-US', { timeZone: 'America/New_York', month: '2-digit' });
+            const day = date.toLocaleString('en-US', { timeZone: 'America/New_York', day: '2-digit' });
+            const hour = date.toLocaleString('en-US', { timeZone: 'America/New_York', hour: '2-digit', hour12: false }); // 24-hour format for calculation
+            const minute = date.toLocaleString('en-US', { timeZone: 'America/New_York', minute: '2-digit' });
+            const second = date.toLocaleString('en-US', { timeZone: 'America/New_York', second: '2-digit' });
+            
+            // Determine AM/PM based on the 24-hour time
+            let hour12 = parseInt(hour);
+            let ampm = 'AM';
+            if (hour12 >= 12) {
+                ampm = 'PM';
+                if (hour12 > 12) {
+                    hour12 -= 12;
+                }
+            }
+            if (hour12 === 0) {
+                hour12 = 12;
+            }
+            
             // Format the main date/time part in New York timezone
-            const nyDateTime = new Intl.DateTimeFormat('en-US', {
-                timeZone: 'America/New_York',
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: true
-            }).format(date);
+            const dateStr = `${month}/${day}/${year}, ${hour12}:${minute}:${second} ${ampm}`;
             
             // Format the fractional part as 9 digits (nanosecond precision)
             let nanoStr = Math.floor(fracPart * 1000000000).toString().padStart(9, '0');
@@ -126,7 +138,7 @@
                 formattedNano += nanoStr[i];
             }
             
-            return `${nyDateTime}.${formattedNano}`;
+            return `${dateStr} ${formattedNano}`;
         }
         
         // Function to update the first card outputs based on Unix timestamp
