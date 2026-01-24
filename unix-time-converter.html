@@ -224,8 +224,24 @@
         updateFirstCard();
         updateCurrentTime();
         
-        // Update current time every second
-        setInterval(updateCurrentTime, 1000);
+        // Update current time based on selected unit precision
+        function startUpdatingTime() {
+            // Clear any existing interval
+            if(window.timeInterval) {
+                clearInterval(window.timeInterval);
+            }
+            
+            // Update every second regardless of unit, but show the appropriate precision in the display
+            window.timeInterval = setInterval(updateCurrentTime, 1000);
+        }
+        
+        // Call initially
+        startUpdatingTime();
+        
+        // Update interval when unit changes
+        document.getElementById('current-unit-select').addEventListener('change', function() {
+            startUpdatingTime();
+        });
     </script>
 </body>
 </html>
