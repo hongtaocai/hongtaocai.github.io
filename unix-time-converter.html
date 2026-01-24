@@ -61,34 +61,32 @@
         <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
             <h2 class="text-xl font-semibold text-gray-800 mb-4">Current Unix Timestamp</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Current Unix Time</label>
-                    <div class="flex space-x-2">
-                        <input 
-                            type="text" 
-                            id="current-unix" 
-                            class="flex-grow px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 cursor-default font-mono"
-                            readonly
-                        >
-                        <select id="current-unit-select" class="w-40 px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition bg-white">
-                            <option value="seconds">Seconds</option>
-                            <option value="milliseconds">Milliseconds</option>
-                            <option value="microseconds">Microseconds</option>
-                            <option value="nanoseconds">Nanoseconds</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Current Date (New York Timezone)</label>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Current Unix Time</label>
+                <div class="flex space-x-2">
                     <input 
                         type="text" 
-                        id="current-date" 
-                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 cursor-default font-mono"
+                        id="current-unix" 
+                        class="flex-grow px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 cursor-default font-mono"
                         readonly
                     >
+                    <select id="current-unit-select" class="w-40 px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition bg-white">
+                        <option value="seconds">Seconds</option>
+                        <option value="milliseconds">Milliseconds</option>
+                        <option value="microseconds">Microseconds</option>
+                        <option value="nanoseconds">Nanoseconds</option>
+                    </select>
                 </div>
+            </div>
+            
+            <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Current Date (New York Timezone)</label>
+                <input 
+                    type="text" 
+                    id="current-date" 
+                    class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 cursor-default font-mono"
+                    readonly
+                >
             </div>
         </div>
     </div>
