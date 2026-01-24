@@ -122,8 +122,8 @@
                 hour12 = 12;
             }
             
-            // Format the main date/time part in New York timezone
-            const dateStr = `${month}/${day}/${year}, ${hour12}:${minute}:${second} ${ampm}`;
+            // Pad hour12 to 2 digits if needed
+            const paddedHour12 = String(hour12).padStart(2, '0');
             
             // Format the fractional part as 9 digits (nanosecond precision)
             let nanoStr = Math.floor(fracPart * 1000000000).toString().padStart(9, '0');
@@ -138,7 +138,8 @@
                 formattedNano += nanoStr[i];
             }
             
-            return `${dateStr} ${formattedNano}`;
+            // Format the main date/time part in New York timezone with subseconds before AM/PM
+            return `${month}/${day}/${year}, ${paddedHour12}:${minute}:${second}.${formattedNano} ${ampm}`;
         }
         
         // Function to update the first card outputs based on Unix timestamp
