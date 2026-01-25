@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sharpe to Prob(P&L > 0) - MiniTool</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen">
     <!-- Navigation -->
     <nav class="bg-white text-gray-800 p-4 shadow-sm">
         <div class="container mx-auto">
             <a href="./minitools.html" class="hover:text-gray-600 flex items-center font-medium">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+                        clip-rule="evenodd" />
                 </svg>
                 Back to MiniTool
             </a>
         </div>
     </nav>
-    
+
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8 max-w-md">
         <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Sharpe to Prob(P&L &gt; 0)</h1>
-        
+
         <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
             <div class="space-y-4">
                 <!-- Annual Sharpe Ratio Input -->
                 <div>
-                    <label for="sharpe-ratio" class="block text-sm font-medium text-gray-700 mb-1">Annual Sharpe Ratio</label>
-                    <input 
-                        type="number" 
-                        id="sharpe-ratio" 
+                    <label for="sharpe-ratio" class="block text-sm font-medium text-gray-700 mb-1">Annual Sharpe
+                        Ratio</label>
+                    <input type="number" id="sharpe-ratio"
                         class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
-                        placeholder="Enter annual sharpe ratio..."
-                        step="any"
-                    >
+                        placeholder="Enter annual sharpe ratio..." step="any">
                 </div>
-                
+
                 <!-- Probability of Positive P&L Input -->
                 <div>
-                    <label for="prob-positive-pnl" class="block text-sm font-medium text-gray-700 mb-1">Prob(P&L &gt; 0)</label>
-                    <input 
-                        type="number" 
-                        id="prob-positive-pnl" 
+                    <label for="prob-positive-pnl" class="block text-sm font-medium text-gray-700 mb-1">Prob(P&L &gt;
+                        0)</label>
+                    <input type="number" id="prob-positive-pnl"
                         class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
-                        placeholder="Enter probability of positive P&L..."
-                        step="any"
-                    >
+                        placeholder="Enter probability of positive P&L..." step="any">
                 </div>
             </div>
         </div>
-        
+
         <div class="mt-8 text-center text-sm text-gray-600">
             <p>Conversion Formulas:</p>
+            <p>Assuming P&L follows a normal distribution</p>
             <p>Prob(P&L &gt; 0) = Φ(annual_sharpe / √252)</p>
             <p>Annual Sharpe Ratio = √252 × Φ⁻¹(Prob(P&L &gt; 0))</p>
             <p>Where Φ is the standard normal cumulative distribution function</p>
@@ -63,74 +63,74 @@
         // Get references to the input fields
         const sharpeRatioInput = document.getElementById('sharpe-ratio');
         const probPositivePnlInput = document.getElementById('prob-positive-pnl');
-        
+
         // Conversion functions
         // Standard normal CDF (cumulative distribution function)
         function normCDF(x) {
             // Using the error function approximation
-            const a1 =  0.254829592;
+            const a1 = 0.254829592;
             const a2 = -0.284496736;
-            const a3 =  1.421413741;
+            const a3 = 1.421413741;
             const a4 = -1.453152027;
-            const a5 =  1.061405429;
-            const p  =  0.3275911;
-            
+            const a5 = 1.061405429;
+            const p = 0.3275911;
+
             const sign = x >= 0 ? 1 : -1;
             x = Math.abs(x) / Math.sqrt(2.0);
-            
+
             const t = 1.0 / (1.0 + p * x);
             const y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
-            
+
             return 0.5 * (1.0 + sign * y);
         }
-        
+
         // Standard normal inverse CDF (percent point function)
         function normPPF(p) {
             // Approximation for inverse normal CDF
             // Using rational approximation for the inverse error function
             if (p <= 0) return -Infinity;
             if (p >= 1) return Infinity;
-            
-            const a = [ -3.969683028665376e+01, 2.209460984245205e+02, 
-                        -2.759285106524169e+02, 1.383577518672690e+02,
-                        -3.066479806654457e+01, 2.506628277459239e+00 ];
-                        
-            const b = [ -5.447609879822406e+01, 1.615858368580409e+02, 
-                        -1.556989798598866e+02, 6.680131188771972e+01,
-                        -1.328068155288572e+01 ];
-                        
-            const c = [ -7.784894002430293e-03, -3.223964580411365e-01, 
-                        -2.400758277161838e+00, -2.549732539343734e+00,
-                        4.374664141464968e+00, 2.938163982698783e+00 ];
-                        
-            const d = [ 7.784695709041462e-03, 3.224671290700398e-01, 
-                        2.445134137142996e+00, 3.754408661907416e+00 ];
-                        
+
+            const a = [-3.969683028665376e+01, 2.209460984245205e+02,
+            -2.759285106524169e+02, 1.383577518672690e+02,
+            -3.066479806654457e+01, 2.506628277459239e+00];
+
+            const b = [-5.447609879822406e+01, 1.615858368580409e+02,
+            -1.556989798598866e+02, 6.680131188771972e+01,
+            -1.328068155288572e+01];
+
+            const c = [-7.784894002430293e-03, -3.223964580411365e-01,
+            -2.400758277161838e+00, -2.549732539343734e+00,
+                4.374664141464968e+00, 2.938163982698783e+00];
+
+            const d = [7.784695709041462e-03, 3.224671290700398e-01,
+                2.445134137142996e+00, 3.754408661907416e+00];
+
             if (p < 0.5) {
                 const q = Math.sqrt(-2.0 * Math.log(p));
-                return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5]) / 
-                       ((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1.0);
+                return (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) /
+                    ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1.0);
             } else {
-                const q = Math.sqrt(-2.0 * Math.log(1.0-p));
-                return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5]) / 
-                       ((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1.0);
+                const q = Math.sqrt(-2.0 * Math.log(1.0 - p));
+                return -(((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) /
+                    ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1.0);
             }
         }
-        
+
         function sharpeToProbability(sharpe) {
             // Prob(P&L > 0) = Φ(sharpe / √252)
             const normalized = sharpe / Math.sqrt(252);
             return normCDF(normalized);
         }
-        
+
         function probabilityToSharpe(prob) {
             // Annual Sharpe Ratio = √252 × Φ⁻¹(Prob(P&L > 0))
             const invNorm = normPPF(prob);
             return Math.sqrt(252) * invNorm;
         }
-        
+
         // Update Probability when Sharpe Ratio changes
-        sharpeRatioInput.addEventListener('input', function() {
+        sharpeRatioInput.addEventListener('input', function () {
             const sharpe = parseFloat(this.value);
             if (!isNaN(sharpe)) {
                 const prob = sharpeToProbability(sharpe);
@@ -139,9 +139,9 @@
                 probPositivePnlInput.value = '';
             }
         });
-        
+
         // Update Sharpe Ratio when Probability changes
-        probPositivePnlInput.addEventListener('input', function() {
+        probPositivePnlInput.addEventListener('input', function () {
             const prob = parseFloat(this.value);
             if (!isNaN(prob) && prob >= 0 && prob <= 1) {
                 const sharpe = probabilityToSharpe(prob);
@@ -152,4 +152,5 @@
         });
     </script>
 </body>
+
 </html>
