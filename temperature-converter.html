@@ -1,58 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temperature Converter - MiniTool</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9SWN0KLH15"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9SWN0KLH15');
+    </script>
 </head>
+
 <body class="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen">
     <!-- Navigation -->
     <nav class="bg-white text-gray-800 p-4 shadow-sm">
         <div class="container mx-auto">
             <a href="./minitools.html" class="hover:text-gray-600 flex items-center font-medium">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+                        clip-rule="evenodd" />
                 </svg>
                 Back to MiniTool
             </a>
         </div>
     </nav>
-    
+
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8 max-w-md">
         <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Temperature Converter</h1>
-        
+
         <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
             <div class="space-y-4">
                 <!-- Fahrenheit Input -->
                 <div>
                     <label for="fahrenheit" class="block text-sm font-medium text-gray-700 mb-1">Fahrenheit (°F)</label>
-                    <input 
-                        type="number" 
-                        id="fahrenheit" 
+                    <input type="number" id="fahrenheit"
                         class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
-                        placeholder="Enter temperature in Fahrenheit..."
-                        step="any"
-                        value="32"
-                    >
+                        placeholder="Enter temperature in Fahrenheit..." step="any" value="32">
                 </div>
-                
+
                 <!-- Celsius Input -->
                 <div>
                     <label for="celsius" class="block text-sm font-medium text-gray-700 mb-1">Celsius (°C)</label>
-                    <input 
-                        type="number" 
-                        id="celsius" 
+                    <input type="number" id="celsius"
                         class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
-                        placeholder="Enter temperature in Celsius..."
-                        step="any"
-                        value="0"
-                    >
+                        placeholder="Enter temperature in Celsius..." step="any" value="0">
                 </div>
             </div>
         </div>
-        
+
         <div class="mt-8 text-center text-sm text-gray-600">
             <p>Conversion Formulas:</p>
             <p>Celsius to Fahrenheit: °F = (°C × 9/5) + 32</p>
@@ -64,18 +67,18 @@
         // Get references to the input fields
         const fahrenheitInput = document.getElementById('fahrenheit');
         const celsiusInput = document.getElementById('celsius');
-        
+
         // Conversion functions
         function fahrenheitToCelsius(f) {
-            return (f - 32) * 5/9;
+            return (f - 32) * 5 / 9;
         }
-        
+
         function celsiusToFahrenheit(c) {
-            return (c * 9/5) + 32;
+            return (c * 9 / 5) + 32;
         }
-        
+
         // Update Celsius when Fahrenheit changes
-        fahrenheitInput.addEventListener('input', function() {
+        fahrenheitInput.addEventListener('input', function () {
             const f = parseFloat(this.value);
             if (!isNaN(f)) {
                 celsiusInput.value = fahrenheitToCelsius(f).toFixed(2);
@@ -83,9 +86,9 @@
                 celsiusInput.value = '';
             }
         });
-        
+
         // Update Fahrenheit when Celsius changes
-        celsiusInput.addEventListener('input', function() {
+        celsiusInput.addEventListener('input', function () {
             const c = parseFloat(this.value);
             if (!isNaN(c)) {
                 fahrenheitInput.value = celsiusToFahrenheit(c).toFixed(2);
@@ -95,4 +98,5 @@
         });
     </script>
 </body>
+
 </html>

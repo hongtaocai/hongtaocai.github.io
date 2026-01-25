@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unix Time Converter - MiniTool</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9SWN0KLH15"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9SWN0KLH15');
+    </script>
 </head>
+
 <body class="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen">
     <!-- Navigation -->
     <nav class="bg-white text-gray-800 p-4 shadow-sm">
         <div class="container mx-auto">
             <a href="./minitools.html" class="hover:text-gray-600 flex items-center font-medium">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+                        clip-rule="evenodd" />
                 </svg>
                 Back to MiniTool
             </a>
         </div>
     </nav>
-    
+
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8 max-w-2xl">
         <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Unix Time Converter</h1>
-        
+
         <!-- Card 1: Unix Timestamp to Human Readable -->
         <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100 mb-6">
             <h2 class="text-xl font-semibold text-gray-800 mb-4">Unix Timestamp to Human Readable</h2>
-            
+
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700 mb-2">Unix Timestamp</label>
                 <div class="flex space-x-2">
-                    <input 
-                        type="number" 
-                        id="unix-input" 
+                    <input type="number" id="unix-input"
                         class="flex-grow px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition bg-white"
-                        placeholder="Enter Unix timestamp..."
-                        value="1609459200"
-                    >
-                    <select id="unit-select" class="w-40 px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition bg-white">
+                        placeholder="Enter Unix timestamp..." value="1609459200">
+                    <select id="unit-select"
+                        class="w-40 px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition bg-white">
                         <option value="seconds">Seconds</option>
                         <option value="milliseconds">Milliseconds</option>
                         <option value="microseconds">Microseconds</option>
@@ -45,76 +55,59 @@
                     </select>
                 </div>
             </div>
-            
+
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Human Readable Date (New York Timezone)</label>
-                <input 
-                    type="text" 
-                    id="date-output" 
+                <label class="block text-sm font-medium text-gray-700 mb-2">Human Readable Date (New York
+                    Timezone)</label>
+                <input type="text" id="date-output"
                     class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 cursor-default font-mono"
-                    readonly
-                >
+                    readonly>
             </div>
         </div>
-        
+
         <!-- Card 2: Current Unix Timestamp -->
         <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
             <h2 class="text-xl font-semibold text-gray-800 mb-4">Current Unix Timestamp</h2>
-            
+
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Current Unix Time (Seconds)</label>
-                <input 
-                    type="text" 
-                    id="current-unix" 
+                <input type="text" id="current-unix"
                     class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 cursor-default font-mono"
-                    readonly
-                >
+                    readonly>
             </div>
-            
+
             <div class="mt-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Milliseconds</label>
-                    <input 
-                        type="text" 
-                        id="current-unix-ms" 
+                    <input type="text" id="current-unix-ms"
                         class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 cursor-default font-mono"
-                        readonly
-                    >
+                        readonly>
                 </div>
             </div>
-            
+
             <div class="mt-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Microseconds</label>
-                    <input 
-                        type="text" 
-                        id="current-unix-us" 
+                    <input type="text" id="current-unix-us"
                         class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 cursor-default font-mono"
-                        readonly
-                    >
+                        readonly>
                 </div>
             </div>
-            
+
             <div class="mt-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Nanoseconds</label>
-                    <input 
-                        type="text" 
-                        id="current-unix-ns" 
+                    <input type="text" id="current-unix-ns"
                         class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 cursor-default font-mono"
-                        readonly
-                    >
+                        readonly>
                 </div>
             </div>
-            
+
             <div class="mt-4">
                 <label class="block text-sm font-medium text-gray-700 mb-2">Current Date (New York Timezone)</label>
-                <input 
-                    type="text" 
-                    id="current-date" 
+                <input type="text" id="current-date"
                     class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 cursor-default font-mono"
-                    readonly
-                >
+                    readonly>
             </div>
         </div>
     </div>
@@ -125,7 +118,7 @@
             // Create a date object with the integer part
             const intPart = Math.floor(unixTimestamp);
             const date = new Date(intPart * 1000);
-            
+
             // Format the main date/time part in New York timezone
             const nyDateTime = new Intl.DateTimeFormat('en-US', {
                 timeZone: 'America/New_York',
@@ -137,26 +130,26 @@
                 second: '2-digit',
                 hour12: true
             }).format(date);
-            
+
             // Split the formatted string to extract individual components
             // Expected format: MM/DD/YYYY, HH:MM:SS AM or MM/DD/YYYY, HH:MM:SS PM
             const parts = nyDateTime.match(/(\d{2})\/(\d{2})\/(\d{4}), (\d{2}):(\d{2}):(\d{2}) (AM|PM)/);
             if (!parts) {
                 return "Invalid date";
             }
-            
+
             const [, month, day, year, hour, minute, second, ampm] = parts;
-            
+
             // Calculate fractional part more precisely to avoid floating point errors
             // We'll avoid multiplication that causes floating point issues
             const fractionalPart = unixTimestamp - intPart;
             // Convert to nanoseconds with rounding to avoid floating point errors
             const nanoSeconds = Math.round(fractionalPart * 1000000000);
-            
+
             // Format the fractional part as 9 digits (nanosecond precision)
             let nanoStr = nanoSeconds.toString().padStart(9, '0');
-            if(nanoStr.length > 9) nanoStr = nanoStr.substring(0, 9);
-            
+            if (nanoStr.length > 9) nanoStr = nanoStr.substring(0, 9);
+
             // Add commas every 3 digits from the right
             let formattedNano = '';
             for (let i = 0; i < nanoStr.length; i++) {
@@ -165,23 +158,23 @@
                 }
                 formattedNano += nanoStr[i];
             }
-            
+
             // Format the main date/time part in New York timezone with subseconds before AM/PM
             return `${month}/${day}/${year}, ${hour}:${minute}:${second}.${formattedNano} ${ampm}`;
         }
-        
+
         // Function to update the first card outputs based on Unix timestamp
         function updateFirstCard() {
             const unixInput = parseFloat(document.getElementById('unix-input').value);
             const unit = document.getElementById('unit-select').value;
-            
+
             if (isNaN(unixInput)) {
                 document.getElementById('date-output').value = 'Invalid Unix timestamp';
                 return;
             }
-            
+
             let adjustedTimestamp = unixInput;
-            switch(unit) {
+            switch (unit) {
                 case 'milliseconds':
                     adjustedTimestamp = unixInput / 1000;
                     break;
@@ -196,36 +189,37 @@
                     // Already in seconds
                     break;
             }
-            
+
             document.getElementById('date-output').value = unixToDate(adjustedTimestamp);
         }
-        
-         // Function to initialize the second card with the page load time
+
+        // Function to initialize the second card with the page load time
         function initializeCurrentTime() {
             const nowInMs = Date.now(); // milliseconds since epoch at page load
             const currentUnix = Math.floor(nowInMs / 1000); // Always in seconds
-            
+
             document.getElementById('current-unix').value = currentUnix.toString();
-            
+
             // Populate the additional time units with precise calculations
             document.getElementById('current-unix-ms').value = nowInMs.toString();
             document.getElementById('current-unix-us').value = Math.floor(nowInMs * 1000).toString();
             document.getElementById('current-unix-ns').value = Math.floor(nowInMs * 1000000).toString();
-            
+
             // Calculate timestamp in seconds for formatting with precise fractional part
             const timestampInSeconds = nowInMs / 1000;
-            
+
             // Format current date in New York timezone with 9-digit subseconds
             document.getElementById('current-date').value = unixToDate(timestampInSeconds);
         }
-        
-         // Event listeners
+
+        // Event listeners
         document.getElementById('unix-input').addEventListener('input', updateFirstCard);
         document.getElementById('unit-select').addEventListener('change', updateFirstCard);
-        
+
         // Initialize
         updateFirstCard();
         initializeCurrentTime();
     </script>
 </body>
+
 </html>
