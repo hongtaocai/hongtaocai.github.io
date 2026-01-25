@@ -13,14 +13,6 @@
         .tree-node {
             margin-left: 20px;
             position: relative;
-            display: flex;
-            align-items: center;
-        }
-        
-        .tree-node-item {
-            display: flex;
-            align-items: center;
-            width: 100%;
         }
         
         .tree-node-content {
@@ -158,10 +150,6 @@
                 if (value !== null && (valueType === 'object' || valueType === 'array')) {
                     const isOpen = false; // Start collapsed
                     
-                    // Create wrapper for toggle and content
-                    const itemWrapper = document.createElement('div');
-                    itemWrapper.className = 'tree-node-item';
-                    
                     // Create toggle element
                     const toggleSpan = document.createElement('span');
                     toggleSpan.className = 'tree-toggle';
@@ -192,12 +180,9 @@
                     typeInfo.textContent = ` (${valueType})`;
                     contentDiv.appendChild(typeInfo);
                     
-                    // Append toggle and content to wrapper
-                    itemWrapper.appendChild(toggleSpan);
-                    itemWrapper.appendChild(contentDiv);
-                    
-                    // Add wrapper to node
-                    nodeDiv.appendChild(itemWrapper);
+                    // Add toggle and content to node div
+                    nodeDiv.appendChild(toggleSpan);
+                    nodeDiv.appendChild(contentDiv);
                     
                     // Create children container (initially hidden)
                     const childrenContainer = document.createElement('div');
