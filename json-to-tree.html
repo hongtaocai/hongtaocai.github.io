@@ -32,8 +32,22 @@
         
         .tree-node {
             margin-left: 20px;
+        }
+
+        .tree-node-content {
+            padding: 4px 0;
+            cursor: pointer;
             display: flex;
             align-items: center;
+        }
+
+        .tree-toggle {
+            margin-right: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #4f46e5;
+            user-select: none;
+            flex-shrink: 0;
         }
 
         .tree-key {
@@ -198,13 +212,14 @@
                     wrapperDiv.appendChild(toggleSpan);
                     wrapperDiv.appendChild(contentDiv);
 
-                    // Add wrapper to node div
+                    // Add wrapper to node div  
                     nodeDiv.appendChild(wrapperDiv);
 
                     // Create children container (initially hidden)
                     const childrenContainer = document.createElement('div');
                     childrenContainer.style.display = isOpen ? 'block' : 'none';
                     childrenContainer.style.marginLeft = '20px';
+                    childrenContainer.style.marginTop = '5px';
                     childrenContainer.className = 'children-container';
 
                     // Process children
@@ -219,6 +234,8 @@
                     }
 
                     nodeDiv.appendChild(childrenContainer);
+                    
+
 
                     // Add click event to toggle
                     toggleSpan.addEventListener('click', (e) => {
@@ -258,6 +275,7 @@
                     nodeDiv.appendChild(contentDiv);
                 }
 
+                nodeDiv.className = 'tree-node';
                 container.appendChild(nodeDiv);
             }
 
