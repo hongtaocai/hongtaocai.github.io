@@ -16,13 +16,25 @@
         </div>
     </nav>
 
+    <!-- Search Bar -->
+    <div class="container mx-auto px-4 py-6">
+        <div class="max-w-md mx-auto">
+            <input 
+                type="text" 
+                id="search-box" 
+                placeholder="Search tools..." 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
+            >
+        </div>
+    </div>
+
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8">
 
-        <!-- Grid of Cards -->
+         <!-- Grid of Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             <!-- Card 1: Temperature Converter -->
-            <a href="temperature-converter.html"
+            <a href="temperature-converter.html" data-card-title="temperature converter"
                 class="block bg-white rounded-xl shadow-sm p-6 hover:shadow-lg transition-all duration-300 border border-gray-100 transform hover:-translate-y-1 transition-transform duration-300 hover:bg-sky-500 hover:text-white group">
                 <div class="flex flex-col">
                     <h3
@@ -32,9 +44,9 @@
                         between Fahrenheit and Celsius</p>
                 </div>
             </a>
-
+            
             <!-- Card 2: Unix Time Converter -->
-            <a href="unix-time-converter.html"
+            <a href="unix-time-converter.html" data-card-title="unix time converter"
                 class="block bg-white rounded-xl shadow-sm p-6 hover:shadow-lg transition-all duration-300 border border-gray-100 transform hover:-translate-y-1 transition-transform duration-300 hover:bg-sky-500 hover:text-white group">
                 <div class="flex flex-col">
                     <h3
@@ -44,9 +56,9 @@
                         Unix timestamp to human readable date time</p>
                 </div>
             </a>
-
+            
             <!-- Card 3: Weight Converter -->
-            <a href="weight-converter.html"
+            <a href="weight-converter.html" data-card-title="weight converter"
                 class="block bg-white rounded-xl shadow-sm p-6 hover:shadow-lg transition-all duration-300 border border-gray-100 transform hover:-translate-y-1 transition-transform duration-300 hover:bg-sky-500 hover:text-white group">
                 <div class="flex flex-col">
                     <h3
@@ -56,9 +68,9 @@
                         between pounds and kilograms</p>
                 </div>
             </a>
-
+            
             <!-- Card 4: Distance Converter -->
-            <a href="distance-converter.html"
+            <a href="distance-converter.html" data-card-title="distance converter"
                 class="block bg-white rounded-xl shadow-sm p-6 hover:shadow-lg transition-all duration-300 border border-gray-100 transform hover:-translate-y-1 transition-transform duration-300 hover:bg-sky-500 hover:text-white group">
                 <div class="flex flex-col">
                     <h3
@@ -68,164 +80,164 @@
                         between distance units</p>
                 </div>
             </a>
-
+            
             <!-- Row 2 -->
             <!-- Card 5: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Card 6: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Card 7: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Card 8: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Row 3 -->
             <!-- Card 9: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Card 10: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Card 11: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Card 12: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Row 4 -->
             <!-- Card 13: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Card 14: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Card 15: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Card 16: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Row 5 -->
             <!-- Card 17: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Card 18: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Card 19: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
                 <p class="text-gray-500 text-sm group-hover:text-white/90 transition-colors duration-300">More tools
                     coming soon</p>
             </div>
-
+            
             <!-- Card 20: Placeholder -->
             <div
-                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group">
+                class="bg-white rounded-xl shadow-sm p-6 border-2 border-dashed border-gray-200 flex flex-col opacity-60 hover:bg-sky-500 hover:text-white group" data-card-title="coming soon">
                 <h3
                     class="text-lg font-semibold text-gray-600 mb-2 group-hover:text-white transition-colors duration-300">
                     Coming Soon</h3>
@@ -239,6 +251,29 @@
             Built with Qwen © 2026. James Cai
         </div>
     </div>
-</body>
 
+    <script>
+        // Get the search box and all card elements
+        const searchBox = document.getElementById('search-box');
+        
+        // Add event listener to search box
+        searchBox.addEventListener('input', filterCards);
+
+        function filterCards() {
+            const searchTerm = searchBox.value.toLowerCase().trim();
+            
+            const allCards = document.querySelectorAll('[data-card-title]');
+            
+            allCards.forEach(card => {
+                const cardTitle = card.getAttribute('data-card-title');
+                
+                if (searchTerm === '' || cardTitle.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
 </html>
