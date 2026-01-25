@@ -161,9 +161,9 @@
             document.getElementById('date-output').value = unixToDate(adjustedTimestamp);
         }
         
-         // Function to update the second card with current time
-        function updateCurrentTime() {
-            const nowInMs = Date.now(); // milliseconds since epoch
+         // Function to initialize the second card with the page load time
+        function initializeCurrentTime() {
+            const nowInMs = Date.now(); // milliseconds since epoch at page load
             const currentUnix = Math.floor(nowInMs / 1000); // Always in seconds
             
             document.getElementById('current-unix').value = currentUnix.toString();
@@ -181,10 +181,7 @@
         
         // Initialize
         updateFirstCard();
-        updateCurrentTime();
-        
-        // Update current time every second
-        window.timeInterval = setInterval(updateCurrentTime, 1000);
+        initializeCurrentTime();
     </script>
 </body>
 </html>
