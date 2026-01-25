@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +30,7 @@
             user-select: none;
             flex-shrink: 0;
         }
-        
+
         .tree-node {
             margin-left: 20px;
         }
@@ -218,8 +219,8 @@
                     // Create children container (initially hidden)
                     const childrenContainer = document.createElement('div');
                     childrenContainer.style.display = isOpen ? 'block' : 'none';
-                    childrenContainer.style.marginLeft = '20px';
-                    childrenContainer.style.marginTop = '5px';
+                    childrenContainer.style.marginLeft = '10px';
+                    childrenContainer.style.marginTop = '0px';
                     childrenContainer.className = 'children-container';
 
                     // Process children
@@ -234,7 +235,7 @@
                     }
 
                     nodeDiv.appendChild(childrenContainer);
-                    
+
 
 
                     // Add click event to toggle
