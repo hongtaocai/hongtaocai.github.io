@@ -13,3 +13,6 @@ The second card should contain the current unix timestamp (again allow the user 
 
 
 In minitools.html, can you add a new card called "Sharpe to Prob(P&L > 0)", it converts between tactic sharpe ratio and positive pnl probability. follow the example of temperature converter to create a new page for it. It should have 2 input boxes which only accepts float numbers, the first one is tactic annual sharpe ratio, the second one is the Prob(P&L > 0). the conversion formulat between the two is: Prob(P&L > 0) = norm.cdf(annual_sharpe / sqrt(252) ), and annual_sharpe = sqrt(252) * norm.ppf(Prob(P&L > 0)). please make the two boxes update whenever one of them is changed. 
+
+
+In minitools.html, can you add a new card called "National Holidays", it should jump to a new page, and show the next 10 US national holiday dates. In the new page, please list the next 10 United State national holidays: date YYYYMMDD and the day of week, and how many days it is from today. 
