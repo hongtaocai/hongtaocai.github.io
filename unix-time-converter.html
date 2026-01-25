@@ -62,21 +62,13 @@
             <h2 class="text-xl font-semibold text-gray-800 mb-4">Current Unix Timestamp</h2>
             
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Current Unix Time</label>
-                <div class="flex space-x-2">
-                    <input 
-                        type="text" 
-                        id="current-unix" 
-                        class="flex-grow px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 cursor-default font-mono"
-                        readonly
-                    >
-                    <select id="current-unit-select" class="w-40 px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition bg-white">
-                        <option value="seconds">Seconds</option>
-                        <option value="milliseconds">Milliseconds</option>
-                        <option value="microseconds">Microseconds</option>
-                        <option value="nanoseconds">Nanoseconds</option>
-                    </select>
-                </div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Current Unix Time (Seconds)</label>
+                <input 
+                    type="text" 
+                    id="current-unix" 
+                    class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 cursor-default font-mono"
+                    readonly
+                >
             </div>
             
             <div class="mt-4">
@@ -169,79 +161,30 @@
             document.getElementById('date-output').value = unixToDate(adjustedTimestamp);
         }
         
-        // Function to update the second card with current time
+         // Function to update the second card with current time
         function updateCurrentTime() {
-            const unit = document.getElementById('current-unit-select').value;
             const nowInMs = Date.now(); // milliseconds since epoch
-            
-            let currentUnix;
-            switch(unit) {
-                case 'milliseconds':
-                    currentUnix = nowInMs;
-                    break;
-                case 'microseconds':
-                    currentUnix = Math.floor(nowInMs * 1000);
-                    break;
-                case 'nanoseconds':
-                    currentUnix = Math.floor(nowInMs * 1000000);
-                    break;
-                case 'seconds':
-                default:
-                    currentUnix = Math.floor(nowInMs / 1000);
-                    break;
-            }
+            const currentUnix = Math.floor(nowInMs / 1000); // Always in seconds
             
             document.getElementById('current-unix').value = currentUnix.toString();
             
-            // Calculate timestamp in seconds with fractional part for formatting
-            let timestampInSeconds;
-            switch(unit) {
-                case 'milliseconds':
-                    timestampInSeconds = nowInMs / 1000;
-                    break;
-                case 'microseconds':
-                    timestampInSeconds = nowInMs / 1000000;
-                    break;
-                case 'nanoseconds':
-                    timestampInSeconds = nowInMs / 1000000000;
-                    break;
-                case 'seconds':
-                default:
-                    timestampInSeconds = nowInMs / 1000;
-                    break;
-            }
+            // Calculate timestamp in seconds for formatting
+            const timestampInSeconds = nowInMs / 1000;
             
             // Format current date in New York timezone with 9-digit subseconds
             document.getElementById('current-date').value = unixToDate(timestampInSeconds);
         }
         
-        // Event listeners
+         // Event listeners
         document.getElementById('unix-input').addEventListener('input', updateFirstCard);
         document.getElementById('unit-select').addEventListener('change', updateFirstCard);
-        document.getElementById('current-unit-select').addEventListener('change', updateCurrentTime);
         
         // Initialize
         updateFirstCard();
         updateCurrentTime();
         
-        // Update current time based on selected unit precision
-        function startUpdatingTime() {
-            // Clear any existing interval
-            if(window.timeInterval) {
-                clearInterval(window.timeInterval);
-            }
-            
-            // Update every second regardless of unit, but show the appropriate precision in the display
-            window.timeInterval = setInterval(updateCurrentTime, 1000);
-        }
-        
-        // Call initially
-        startUpdatingTime();
-        
-        // Update interval when unit changes
-        document.getElementById('current-unit-select').addEventListener('change', function() {
-            startUpdatingTime();
-        });
+        // Update current time every second
+        window.timeInterval = setInterval(updateCurrentTime, 1000);
     </script>
 </body>
 </html>
