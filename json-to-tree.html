@@ -29,6 +29,12 @@
             user-select: none;
             flex-shrink: 0;
         }
+        
+        .tree-node {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
 
         .tree-key {
             font-weight: bold;
@@ -153,6 +159,11 @@
                 if (value !== null && (valueType === 'object' || valueType === 'array')) {
                     const isOpen = false; // Start collapsed
 
+                    // Create wrapper for toggle and content to ensure they're on same line
+                    const wrapperDiv = document.createElement('div');
+                    wrapperDiv.style.display = 'flex';
+                    wrapperDiv.style.alignItems = 'center';
+
                     // Create toggle element
                     const toggleSpan = document.createElement('span');
                     toggleSpan.className = 'tree-toggle';
@@ -183,9 +194,12 @@
                     typeInfo.textContent = ` (${valueType})`;
                     contentDiv.appendChild(typeInfo);
 
-                    // Add toggle and content to node div
-                    nodeDiv.appendChild(toggleSpan);
-                    nodeDiv.appendChild(contentDiv);
+                    // Add toggle and content to wrapper
+                    wrapperDiv.appendChild(toggleSpan);
+                    wrapperDiv.appendChild(contentDiv);
+
+                    // Add wrapper to node div
+                    nodeDiv.appendChild(wrapperDiv);
 
                     // Create children container (initially hidden)
                     const childrenContainer = document.createElement('div');
