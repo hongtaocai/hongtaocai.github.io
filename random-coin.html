@@ -58,6 +58,16 @@
                 transform: translateY(0) rotateY(720deg);
             }
         }
+        
+        .button-disabled {
+            background-color: #cbd5e1;
+            cursor: not-allowed;
+        }
+        
+        .button-disabled:hover {
+            background-color: #cbd5e1;
+            box-shadow: none;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen flex flex-col">
@@ -100,6 +110,7 @@
             flipButton.addEventListener('click', () => {
                 // Disable button during animation
                 flipButton.disabled = true;
+                flipButton.classList.add('button-disabled');
                 
                 // Add flip animation class
                 coin.classList.add('flip-animation');
@@ -113,6 +124,7 @@
                     setTimeout(() => {
                         coin.classList.remove('flip-animation');
                         flipButton.disabled = false;
+                        flipButton.classList.remove('button-disabled');
                     }, 1500);
                 }, 1400); // Wait almost the whole animation time
             });
