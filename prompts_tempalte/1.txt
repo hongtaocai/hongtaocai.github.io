@@ -5,3 +5,8 @@ In the box, each row have 4 cards, and there are 5 rows.
 The 1st card should be a Temperature Converter. After the user clicks into it, we should jump to another page that converts between F and C Temperatures.
 The 2nd card should be a unix time to human readable date converter. After the user clicks into it, we should jump to another page that converts between unix time and human readable date time.
 The new pages should also have Tailwind CSS. 
+
+
+in the unix time converter.html, divide the page into 2 section cards.
+The first card will convert a unix timestamp to human readable datetime (YYYY/MM/DD, followed by intraday hour/minute/second/subsecond AM or PM), and it should use New York timezone. I do not need the ISO format. We should allow the user to choose whether the unix timestamp is in second, millisecond, microsecond, or nanosecond.
+The second card should contain the current unix timestamp (again allow the user to choose unit) and the current human readable date time string. It should tick every second.
