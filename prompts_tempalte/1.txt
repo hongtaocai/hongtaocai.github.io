@@ -10,3 +10,6 @@ The new pages should also have Tailwind CSS.
 in the unix time converter.html, divide the page into 2 section cards.
 The first card will convert a unix timestamp to human readable datetime (YYYY/MM/DD, followed by intraday hour/minute/second/subsecond AM or PM), and it should use New York timezone. I do not need the ISO format. We should allow the user to choose whether the unix timestamp is in second, millisecond, microsecond, or nanosecond.
 The second card should contain the current unix timestamp (again allow the user to choose unit) and the current human readable date time string. It should tick every second.
+
+
+In minitools.html, can you add a new card called "Sharpe to Prob(P&L > 0)", it converts between tactic sharpe ratio and positive pnl probability. follow the example of temperature converter to create a new page for it. It should have 2 input boxes which only accepts float numbers, the first one is tactic annual sharpe ratio, the second one is the Prob(P&L > 0). the conversion formulat between the two is: Prob(P&L > 0) = norm.cdf(annual_sharpe / sqrt(252) ), and annual_sharpe = sqrt(252) * norm.ppf(Prob(P&L > 0)). please make the two boxes update whenever one of them is changed. 
