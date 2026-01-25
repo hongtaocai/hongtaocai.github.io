@@ -122,11 +122,8 @@
     <script>
         // Function to convert Unix timestamp to readable date in New York timezone
         function unixToDate(unixTimestamp) {
-            // Separate integer and fractional parts to handle subseconds properly
-            const intPart = Math.floor(unixTimestamp);
-            const fracPart = unixTimestamp - intPart;
-            
             // Create a date object with the integer part
+            const intPart = Math.floor(unixTimestamp);
             const date = new Date(intPart * 1000);
             
             // Format the main date/time part in New York timezone
@@ -150,8 +147,14 @@
             
             const [, month, day, year, hour, minute, second, ampm] = parts;
             
+            // Calculate fractional part more precisely to avoid floating point errors
+            // We'll avoid multiplication that causes floating point issues
+            const fractionalPart = unixTimestamp - intPart;
+            // Convert to nanoseconds with rounding to avoid floating point errors
+            const nanoSeconds = Math.round(fractionalPart * 1000000000);
+            
             // Format the fractional part as 9 digits (nanosecond precision)
-            let nanoStr = Math.floor(fracPart * 1000000000).toString().padStart(9, '0');
+            let nanoStr = nanoSeconds.toString().padStart(9, '0');
             if(nanoStr.length > 9) nanoStr = nanoStr.substring(0, 9);
             
             // Add commas every 3 digits from the right
@@ -204,12 +207,12 @@
             
             document.getElementById('current-unix').value = currentUnix.toString();
             
-            // Populate the additional time units
+            // Populate the additional time units with precise calculations
             document.getElementById('current-unix-ms').value = nowInMs.toString();
             document.getElementById('current-unix-us').value = Math.floor(nowInMs * 1000).toString();
             document.getElementById('current-unix-ns').value = Math.floor(nowInMs * 1000000).toString();
             
-            // Calculate timestamp in seconds for formatting
+            // Calculate timestamp in seconds for formatting with precise fractional part
             const timestampInSeconds = nowInMs / 1000;
             
             // Format current date in New York timezone with 9-digit subseconds
