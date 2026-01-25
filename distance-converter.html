@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distance Converter - MiniTool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white text-gray-800 p-4 shadow-sm">
+        <div class="container mx-auto">
+            <a href="./minitools.html" class="hover:text-gray-600 flex items-center font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+                Back to MiniTool
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Distance Converter</h1>
+        
+        <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
+            <div class="space-y-4">
+                <!-- Meter Input -->
+                <div>
+                    <label for="meters" class="block text-sm font-medium text-gray-700 mb-1">Meters (m)</label>
+                    <input 
+                        type="number" 
+                        id="meters" 
+                        class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
+                        placeholder="Enter distance in meters..."
+                        step="any"
+                        value="1"
+                    >
+                </div>
+                
+                <!-- Kilometer Input -->
+                <div>
+                    <label for="kilometers" class="block text-sm font-medium text-gray-700 mb-1">Kilometers (km)</label>
+                    <input 
+                        type="number" 
+                        id="kilometers" 
+                        class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
+                        placeholder="Enter distance in kilometers..."
+                        step="any"
+                        value="0.001"
+                    >
+                </div>
+                
+                <!-- Centimeter Input -->
+                <div>
+                    <label for="centimeters" class="block text-sm font-medium text-gray-700 mb-1">Centimeters (cm)</label>
+                    <input 
+                        type="number" 
+                        id="centimeters" 
+                        class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
+                        placeholder="Enter distance in centimeters..."
+                        step="any"
+                        value="100"
+                    >
+                </div>
+                
+                <!-- Mile Input -->
+                <div>
+                    <label for="miles" class="block text-sm font-medium text-gray-700 mb-1">Miles (mi)</label>
+                    <input 
+                        type="number" 
+                        id="miles" 
+                        class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
+                        placeholder="Enter distance in miles..."
+                        step="any"
+                        value="0.000621371"
+                    >
+                </div>
+                
+                <!-- Foot Input -->
+                <div>
+                    <label for="feet" class="block text-sm font-medium text-gray-700 mb-1">Feet (ft)</label>
+                    <input 
+                        type="number" 
+                        id="feet" 
+                        class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
+                        placeholder="Enter distance in feet..."
+                        step="any"
+                        value="3.28084"
+                    >
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center text-sm text-gray-600">
+            <p>Conversion Factors:</p>
+            <p>1 km = 1000 m | 1 m = 100 cm | 1 mile = 1609.34 m | 1 foot = 0.3048 m</p>
+        </div>
+    </div>
+
+    <script>
+        // Get references to the input fields
+        const metersInput = document.getElementById('meters');
+        const kilometersInput = document.getElementById('kilometers');
+        const centimetersInput = document.getElementById('centimeters');
+        const milesInput = document.getElementById('miles');
+        const feetInput = document.getElementById('feet');
+        
+        // Conversion constants (to meters)
+        const METERS_TO_METERS = 1;
+        const METERS_TO_KILOMETERS = 0.001;
+        const METERS_TO_CENTIMETERS = 100;
+        const METERS_TO_MILES = 0.000621371;
+        const METERS_TO_FEET = 3.28084;
+        
+        // Update all fields based on meters
+        function updateAllFields(meters) {
+            if (isNaN(meters)) return;
+            
+            // Update all input fields with converted values
+            kilometersInput.value = (meters * METERS_TO_KILOMETERS).toFixed(6);
+            centimetersInput.value = (meters * METERS_TO_CENTIMETERS).toFixed(2);
+            milesInput.value = (meters * METERS_TO_MILES).toFixed(6);
+            feetInput.value = (meters * METERS_TO_FEET).toFixed(2);
+        }
+        
+        // Update meters when kilometers changes
+        kilometersInput.addEventListener('input', function() {
+            const kilometers = parseFloat(this.value);
+            if (!isNaN(kilometers)) {
+                const meters = kilometers / METERS_TO_KILOMETERS;
+                metersInput.value = meters.toFixed(3);
+                updateAllFields(meters);
+            } else {
+                metersInput.value = '';
+            }
+        });
+        
+        // Update meters when centimeters changes
+        centimetersInput.addEventListener('input', function() {
+            const centimeters = parseFloat(this.value);
+            if (!isNaN(centimeters)) {
+                const meters = centimeters / METERS_TO_CENTIMETERS;
+                metersInput.value = meters.toFixed(3);
+                updateAllFields(meters);
+            } else {
+                metersInput.value = '';
+            }
+        });
+        
+        // Update meters when miles changes
+        milesInput.addEventListener('input', function() {
+            const miles = parseFloat(this.value);
+            if (!isNaN(miles)) {
+                const meters = miles / METERS_TO_MILES;
+                metersInput.value = meters.toFixed(3);
+                updateAllFields(meters);
+            } else {
+                metersInput.value = '';
+            }
+        });
+        
+        // Update meters when feet changes
+        feetInput.addEventListener('input', function() {
+            const feet = parseFloat(this.value);
+            if (!isNaN(feet)) {
+                const meters = feet / METERS_TO_FEET;
+                metersInput.value = meters.toFixed(3);
+                updateAllFields(meters);
+            } else {
+                metersInput.value = '';
+            }
+        });
+        
+        // Update all fields when meters changes
+        metersInput.addEventListener('input', function() {
+            const meters = parseFloat(this.value);
+            if (!isNaN(meters)) {
+                updateAllFields(meters);
+            } else {
+                // If meters is NaN, clear all other fields
+                kilometersInput.value = '';
+                centimetersInput.value = '';
+                milesInput.value = '';
+                feetInput.value = '';
+            }
+        });
+        
+        // Initialize all fields based on the initial meters value
+        window.onload = function() {
+            const initialMeters = parseFloat(metersInput.value);
+            updateAllFields(initialMeters);
+        };
+    </script>
+</body>
+</html>

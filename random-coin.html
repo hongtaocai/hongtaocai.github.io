@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flip - MiniTool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .coin {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #c9a86a, #e6c98c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            margin: 0 auto 40px;
+            position: relative;
+            transition: transform 0.1s;
+        }
+        
+        .coin::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid rgba(139, 69, 19, 0.3);
+            border-radius: 50%;
+        }
+        
+        .flip-animation {
+            animation: flip 1.5s ease-in-out;
+        }
+        
+        @keyframes flip {
+            0% {
+                transform: translateY(0) rotateY(0);
+            }
+            20% {
+                transform: translateY(-100px) rotateY(180deg);
+            }
+            40% {
+                transform: translateY(-150px) rotateY(360deg);
+            }
+            60% {
+                transform: translateY(-100px) rotateY(540deg);
+            }
+            80% {
+                transform: translateY(-50px) rotateY(720deg);
+            }
+            100% {
+                transform: translateY(0) rotateY(720deg);
+            }
+        }
+        
+        .button-disabled {
+            background-color: #cbd5e1 !important;
+            cursor: not-allowed;
+        }
+        
+        .button-disabled:hover {
+            background-color: #cbd5e1 !important;
+            box-shadow: none !important;
+        }
+        
+        .button-disabled:active {
+            transform: none !important;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white text-gray-800 p-4 shadow-sm">
+        <div class="container mx-auto">
+            <a href="./minitools.html" class="hover:text-gray-600 flex items-center font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+                Back to MiniTool
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8 max-w-md flex-grow flex flex-col justify-center">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Coin Flip</h1>
+        
+        <div class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100 flex flex-col items-center">
+            <div id="coin" class="coin">
+                <span id="coin-text">?</span>
+            </div>
+            
+            <button id="flip-button" class="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-sm hover:shadow">
+                Flip Coin
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const coin = document.getElementById('coin');
+            const coinText = document.getElementById('coin-text');
+            const flipButton = document.getElementById('flip-button');
+            
+            // Set initial state
+            coinText.textContent = '?';
+            
+             flipButton.addEventListener('click', () => {
+                // Disable button during animation
+                flipButton.disabled = true;
+                flipButton.classList.add('button-disabled');
+                
+                // Add flip animation class
+                coin.classList.add('flip-animation');
+                
+                // Show ? during animation
+                coinText.textContent = '?';
+                
+                // Generate random result after animation completes
+                setTimeout(() => {
+                    const result = Math.random() < 0.5 ? 'HEAD' : 'TAIL';
+                    coinText.textContent = result;
+                    
+                    // Remove animation class after it completes
+                    setTimeout(() => {
+                        coin.classList.remove('flip-animation');
+                        flipButton.disabled = false;
+                        flipButton.classList.remove('button-disabled');
+                    }, 1500);
+                }, 1400); // Wait almost the whole animation time
+            });
+        });
+    </script>
+</body>
+</html>

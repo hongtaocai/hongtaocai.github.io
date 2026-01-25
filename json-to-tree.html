@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to Tree - MiniTool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .monospace-font {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+
+        .tree-node {
+            margin-left: 20px;
+        }
+
+        .tree-node-content {
+            padding: 4px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .tree-toggle {
+            margin-right: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #4f46e5;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .tree-node {
+            margin-left: 20px;
+        }
+
+        .tree-node-content {
+            padding: 4px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .tree-toggle {
+            margin-right: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #4f46e5;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .tree-key {
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .tree-value {
+            color: #1e293b;
+            margin-left: 8px;
+        }
+
+        .tree-type {
+            color: #64748b;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+
+        .tree-object,
+        .tree-array {
+            color: #2563eb;
+        }
+
+        .tree-string {
+            color: #16a34a;
+        }
+
+        .tree-number {
+            color: #ea580c;
+        }
+
+        .tree-boolean {
+            color: #db2777;
+        }
+
+        .tree-null {
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white text-gray-800 p-4 shadow-sm">
+        <div class="container mx-auto">
+            <a href="./minitools.html" class="hover:text-gray-600 flex items-center font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+                        clip-rule="evenodd" />
+                </svg>
+                Back to MiniTool
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="flex flex-col flex-grow">
+        <h1 class="text-3xl font-bold text-center mb-4 text-gray-800">JSON to Tree</h1>
+
+        <div class="flex flex-row flex-grow gap-4 px-4">
+            <!-- Left Section: JSON Input (1/3 of width) -->
+            <div class="w-1/3 bg-white rounded-2xl shadow-sm p-6 border border-gray-100 flex flex-col">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-semibold text-gray-800">JSON Input</h2>
+                    <button id="beautify-btn" 
+                        class="bg-sky-600 hover:bg-sky-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 shadow-sm hover:shadow">
+                        Beautify
+                    </button>
+                </div>
+                <textarea id="json-input"
+                    class="flex-grow p-4 border border-gray-300 rounded-lg monospace-font focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-gray-50"
+                    placeholder="Paste your JSON here...">{
+  "name": "John Doe",
+  "age": 35,
+  "address": {
+    "street": "123 Main St",
+    "city": "New York",
+    "zipCode": "10001"
+  },
+  "hobbies": [
+    "reading",
+    "swimming",
+    "coding"
+  ],
+  "married": true,
+  "spouse": null
+}</textarea>
+            </div>
+
+            <!-- Right Section: Tree Output (2/3 of width) -->
+            <div class="w-2/3 bg-white rounded-2xl shadow-sm p-6 border border-gray-100 flex flex-col">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Tree View</h2>
+                <div id="tree-container"
+                    class="flex-grow overflow-auto border border-gray-200 rounded-lg p-4 bg-gray-50">
+                    <div id="tree-output" class="text-sm"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const jsonInput = document.getElementById('json-input');
+            const treeOutput = document.getElementById('tree-output');
+
+            // Function to render the tree view
+            function renderTree(obj, parentKey = '', isRoot = true) {
+                const container = document.createElement('div');
+
+                if (isRoot) {
+                    renderNode(container, obj, parentKey, true);
+                } else {
+                    renderNode(container, obj, parentKey);
+                }
+
+                return container;
+            }
+
+            // Recursive function to render nodes
+            function renderNode(container, value, key, isRoot = false) {
+                const nodeDiv = document.createElement('div');
+                nodeDiv.className = 'tree-node';
+
+                // Determine type of value
+                const valueType = Array.isArray(value) ? 'array' : typeof value;
+
+                if (value !== null && (valueType === 'object' || valueType === 'array')) {
+                    const isOpen = false; // Start collapsed
+
+                    // Create wrapper for toggle and content to ensure they're on same line
+                    const wrapperDiv = document.createElement('div');
+                    wrapperDiv.style.display = 'flex';
+                    wrapperDiv.style.alignItems = 'center';
+
+                    // Create toggle element
+                    const toggleSpan = document.createElement('span');
+                    toggleSpan.className = 'tree-toggle';
+                    toggleSpan.textContent = isOpen ? '▼' : '▶';
+
+                    // Create content div
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'tree-node-content';
+
+                    if (!isRoot) {
+                        const keySpan = document.createElement('span');
+                        keySpan.className = 'tree-key';
+                        keySpan.textContent = `"${key}"`;
+                        contentDiv.appendChild(keySpan);
+
+                        const colonSpan = document.createElement('span');
+                        colonSpan.textContent = ': ';
+                        contentDiv.appendChild(colonSpan);
+                    }
+
+                    const typeSpan = document.createElement('span');
+                    typeSpan.className = `tree-${valueType}`;
+                    typeSpan.textContent = valueType === 'array' ? '[...]' : '{...}';
+                    contentDiv.appendChild(typeSpan);
+
+                    const typeInfo = document.createElement('span');
+                    typeInfo.className = 'tree-type';
+                    typeInfo.textContent = ` (${valueType})`;
+                    contentDiv.appendChild(typeInfo);
+
+                    // Add toggle and content to wrapper
+                    wrapperDiv.appendChild(toggleSpan);
+                    wrapperDiv.appendChild(contentDiv);
+
+                    // Add wrapper to node div  
+                    nodeDiv.appendChild(wrapperDiv);
+
+                    // Create children container (initially hidden)
+                    const childrenContainer = document.createElement('div');
+                    childrenContainer.style.display = isOpen ? 'block' : 'none';
+                    childrenContainer.style.marginLeft = '10px';
+                    childrenContainer.style.marginTop = '0px';
+                    childrenContainer.className = 'children-container';
+
+                    // Process children
+                    const entries = valueType === 'array'
+                        ? value.map((item, index) => [index.toString(), item])
+                        : Object.entries(value);
+
+                    for (const [childKey, childValue] of entries) {
+                        const childNode = document.createElement('div');
+                        renderNode(childNode, childValue, childKey);
+                        childrenContainer.appendChild(childNode);
+                    }
+
+                    nodeDiv.appendChild(childrenContainer);
+
+
+
+                    // Add click event to toggle
+                    toggleSpan.addEventListener('click', (e) => {
+                        e.stopPropagation(); // Prevent event bubbling
+                        const isCurrentlyOpen = childrenContainer.style.display === 'block';
+                        childrenContainer.style.display = isCurrentlyOpen ? 'none' : 'block';
+                        toggleSpan.textContent = isCurrentlyOpen ? '▶' : '▼';
+                    });
+                } else {
+                    // For primitive values
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'tree-node-content';
+
+                    if (!isRoot) {
+                        const keySpan = document.createElement('span');
+                        keySpan.className = 'tree-key';
+                        keySpan.textContent = `"${key}"`;
+                        contentDiv.appendChild(keySpan);
+
+                        const colonSpan = document.createElement('span');
+                        colonSpan.textContent = ': ';
+                        contentDiv.appendChild(colonSpan);
+                    }
+
+                    const valueSpan = document.createElement('span');
+                    valueSpan.className = `tree-${valueType}`;
+
+                    if (valueType === 'string') {
+                        valueSpan.textContent = `"${value}"`;
+                    } else if (value === null) {
+                        valueSpan.textContent = 'null';
+                    } else {
+                        valueSpan.textContent = String(value);
+                    }
+
+                    contentDiv.appendChild(valueSpan);
+                    nodeDiv.appendChild(contentDiv);
+                }
+
+                nodeDiv.className = 'tree-node';
+                container.appendChild(nodeDiv);
+            }
+
+            // Function to update the tree view
+            function updateTreeView() {
+                try {
+                    const jsonString = jsonInput.value.trim();
+                    if (!jsonString) {
+                        treeOutput.innerHTML = '<div class="text-gray-500 italic">Enter JSON to see tree view</div>';
+                        return;
+                    }
+
+                    const jsonObj = JSON.parse(jsonString);
+                    treeOutput.innerHTML = '';
+                    treeOutput.appendChild(renderTree(jsonObj, '', true));
+                } catch (error) {
+                    treeOutput.innerHTML = `<div class="text-red-500">Invalid JSON: ${error.message}</div>`;
+                }
+            }
+
+            // Initial render
+            updateTreeView();
+
+             // Update on input change
+             jsonInput.addEventListener('input', updateTreeView);
+             
+             // Add beautify functionality
+             const beautifyBtn = document.getElementById('beautify-btn');
+             beautifyBtn.addEventListener('click', function() {
+                 try {
+                     const jsonString = jsonInput.value.trim();
+                     if (!jsonString) {
+                         return;
+                     }
+                     
+                     const jsonObj = JSON.parse(jsonString);
+                     const beautifiedJson = JSON.stringify(jsonObj, null, 2);
+                     jsonInput.value = beautifiedJson;
+                     updateTreeView(); // Update the tree view after beautifying
+                 } catch (error) {
+                     alert('Invalid JSON: ' + error.message);
+                 }
+             });
+         });
+     </script>
+</body>
+</html>
