@@ -81,16 +81,16 @@
     </nav>
     
     <!-- Main Content -->
-    <div class="container mx-auto px-4 py-8 flex-grow">
-        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">JSON to Tree</h1>
+    <div class="flex flex-col flex-grow">
+        <h1 class="text-3xl font-bold text-center mb-4 text-gray-800">JSON to Tree</h1>
         
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Left Section: JSON Input -->
-            <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
+        <div class="flex flex-row flex-grow gap-4 px-4">
+            <!-- Left Section: JSON Input (1/3 of width) -->
+            <div class="w-1/3 bg-white rounded-2xl shadow-sm p-6 border border-gray-100 flex flex-col">
                 <h2 class="text-lg font-semibold text-gray-800 mb-4">JSON Input</h2>
                 <textarea 
                     id="json-input" 
-                    class="w-full h-96 p-4 border border-gray-300 rounded-lg monospace-font focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-gray-50"
+                    class="flex-grow p-4 border border-gray-300 rounded-lg monospace-font focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-gray-50"
                     placeholder="Paste your JSON here..."
                 >{
   "name": "John Doe",
@@ -110,10 +110,10 @@
 }</textarea>
             </div>
             
-            <!-- Right Section: Tree Output -->
-            <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
+            <!-- Right Section: Tree Output (2/3 of width) -->
+            <div class="w-2/3 bg-white rounded-2xl shadow-sm p-6 border border-gray-100 flex flex-col">
                 <h2 class="text-lg font-semibold text-gray-800 mb-4">Tree View</h2>
-                <div id="tree-container" class="h-96 overflow-auto border border-gray-200 rounded-lg p-4 bg-gray-50">
+                <div id="tree-container" class="flex-grow overflow-auto border border-gray-200 rounded-lg p-4 bg-gray-50">
                     <div id="tree-output" class="text-sm"></div>
                 </div>
             </div>
