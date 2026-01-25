@@ -13,6 +13,14 @@
         .tree-node {
             margin-left: 20px;
             position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tree-node-item {
+            display: flex;
+            align-items: center;
+            width: 100%;
         }
         
         .tree-node-content {
@@ -28,6 +36,7 @@
             font-weight: bold;
             color: #4f46e5;
             user-select: none;
+            flex-shrink: 0;
         }
         
         .tree-key {
@@ -147,7 +156,11 @@
                 const valueType = Array.isArray(value) ? 'array' : typeof value;
                 
                 if (value !== null && (valueType === 'object' || valueType === 'array')) {
-                    const isOpen = false; // Start collapsed by default
+                    const isOpen = false; // Start collapsed
+                    
+                    // Create wrapper for toggle and content
+                    const itemWrapper = document.createElement('div');
+                    itemWrapper.className = 'tree-node-item';
                     
                     // Create toggle element
                     const toggleSpan = document.createElement('span');
@@ -179,6 +192,80 @@
                     typeInfo.textContent = ` (${valueType})`;
                     contentDiv.appendChild(typeInfo);
                     
+                    // Append toggle and content to wrapper
+                    itemWrapper.appendChild(toggleSpan);
+                    itemWrapper.appendChild(contentDiv);
+                    
+                    // Add wrapper to node
+                    nodeDiv.appendChild(itemWrapper);
+                    
+                    // Create children container (initially hidden)
+                    const childrenContainer = document.createElement('div');
+                    childrenContainer.style.display = isOpen ? 'block' : 'none';
+                    childrenContainer.className = 'children-container';
+                    
+                    // Process children
+                    const entries = valueType === 'array' 
+                        ? value.map((item, index) => [index.toString(), item]) 
+                        : Object.entries(value);
+                    
+                    for (const [childKey, childValue] of entries) {
+                        const childNode = document.createElement('div');
+                        renderNode(childNode, childValue, childKey);
+                        childrenContainer.appendChild(childNode);
+                    }
+                    
+                    nodeDiv.appendChild(childrenContainer);
+                    
+                    // Add click event to toggle
+                    toggleSpan.addEventListener('click', (e) => {
+                        e.stopPropagation(); // Prevent event bubbling
+                        const isCurrentlyOpen = childrenContainer.style.display === 'block';
+                        childrenContainer.style.display = isCurrentlyOpen ? 'none' : 'block';
+                        toggleSpan.textContent = isCurrentlyOpen ? '▶' : '▼';
+                    });
+                } else {
+                    // For primitive values
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'tree-node-content';
+                    
+                    if (!isRoot) {
+                        const keySpan = document.createElement('span');
+                        keySpan.className = 'tree-key';
+                        keySpan.textContent = `"${key}"`;
+                        contentDiv.appendChild(keySpan);
+                        
+                        const colonSpan = document.createElement('span');
+                        colonSpan.textContent = ': ';
+                        contentDiv.appendChild(colonSpan);
+                    }
+                    
+                    const valueSpan = document.createElement('span');
+                    valueSpan.className = `tree-${valueType}`;
+                    
+                    if (valueType === 'string') {
+                        valueSpan.textContent = `"${value}"`;
+                    } else if (value === null) {
+                        valueSpan.textContent = 'null';
+                    } else {
+                        valueSpan.textContent = String(value);
+                    }
+                    
+                    contentDiv.appendChild(valueSpan);
+                    nodeDiv.appendChild(contentDiv);
+                }
+                    
+                    const typeSpan = document.createElement('span');
+                    typeSpan.className = `tree-${valueType}`;
+                    typeSpan.textContent = valueType === 'array' ? '[...]' : '{...}';
+                    contentDiv.appendChild(typeSpan);
+                    
+                    const typeInfo = document.createElement('span');
+                    typeInfo.className = 'tree-type';
+                    typeInfo.textContent = ` (${valueType})`;
+                    contentDiv.appendChild(typeInfo);
+                    
+                    // Add toggle and content to node
                     nodeDiv.appendChild(toggleSpan);
                     nodeDiv.appendChild(contentDiv);
                     
