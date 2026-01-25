@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSON to Tree - MiniTool</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9SWN0KLH15"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9SWN0KLH15');
+    </script>
     <style>
         .monospace-font {
             font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
@@ -115,7 +123,7 @@
             <div class="w-1/3 bg-white rounded-2xl shadow-sm p-6 border border-gray-100 flex flex-col">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-lg font-semibold text-gray-800">JSON Input</h2>
-                    <button id="beautify-btn" 
+                    <button id="beautify-btn"
                         class="bg-sky-600 hover:bg-sky-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 shadow-sm hover:shadow">
                         Beautify
                     </button>
@@ -306,27 +314,28 @@
             // Initial render
             updateTreeView();
 
-             // Update on input change
-             jsonInput.addEventListener('input', updateTreeView);
-             
-             // Add beautify functionality
-             const beautifyBtn = document.getElementById('beautify-btn');
-             beautifyBtn.addEventListener('click', function() {
-                 try {
-                     const jsonString = jsonInput.value.trim();
-                     if (!jsonString) {
-                         return;
-                     }
-                     
-                     const jsonObj = JSON.parse(jsonString);
-                     const beautifiedJson = JSON.stringify(jsonObj, null, 2);
-                     jsonInput.value = beautifiedJson;
-                     updateTreeView(); // Update the tree view after beautifying
-                 } catch (error) {
-                     alert('Invalid JSON: ' + error.message);
-                 }
-             });
-         });
-     </script>
+            // Update on input change
+            jsonInput.addEventListener('input', updateTreeView);
+
+            // Add beautify functionality
+            const beautifyBtn = document.getElementById('beautify-btn');
+            beautifyBtn.addEventListener('click', function () {
+                try {
+                    const jsonString = jsonInput.value.trim();
+                    if (!jsonString) {
+                        return;
+                    }
+
+                    const jsonObj = JSON.parse(jsonString);
+                    const beautifiedJson = JSON.stringify(jsonObj, null, 2);
+                    jsonInput.value = beautifiedJson;
+                    updateTreeView(); // Update the tree view after beautifying
+                } catch (error) {
+                    alert('Invalid JSON: ' + error.message);
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
