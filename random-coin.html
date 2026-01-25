@@ -111,7 +111,7 @@
             // Set initial state
             coinText.textContent = '?';
             
-            flipButton.addEventListener('click', () => {
+             flipButton.addEventListener('click', () => {
                 // Disable button during animation
                 flipButton.disabled = true;
                 flipButton.classList.add('button-disabled');
@@ -119,9 +119,12 @@
                 // Add flip animation class
                 coin.classList.add('flip-animation');
                 
-                // Generate random result after animation delay
+                // Show ? during animation
+                coinText.textContent = '?';
+                
+                // Generate random result after animation completes
                 setTimeout(() => {
-                    const result = Math.random() < 0.5 ? 'HEADS' : 'TAILS';
+                    const result = Math.random() < 0.5 ? 'HEAD' : 'TAIL';
                     coinText.textContent = result;
                     
                     // Remove animation class after it completes
