@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List - MiniTool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .done {
+            color: #94a3b8 !important;
+        }
+
+        .done-item {
+            background-color: #f1f5f9 !important;
+            border-color: #e2e8f0 !important;
+        }
+
+        .dragging {
+            opacity: 0.2;
+            cursor: grabbing;
+        }
+
+        .drag-ghost {
+            opacity: 1 !important;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            background-color: white !important;
+            border-color: #e2e8f0 !important;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white text-gray-800 p-4 shadow-sm">
+        <div class="container mx-auto">
+            <a href="./minitools.html" class="hover:text-gray-600 flex items-center font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+                        clip-rule="evenodd" />
+                </svg>
+                Back to MiniTool
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8 max-w-md">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Todo List</h1>
+
+        <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
+            <!-- Add Todo Form -->
+            <form id="todo-form" class="flex gap-2 mb-6">
+                <input type="text" id="todo-input"
+                    class="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
+                    placeholder="Add a new task..." required>
+                <button type="submit"
+                    class="px-4 py-2 bg-sky-500 text-white font-medium rounded-lg hover:bg-sky-600 transition duration-200 shadow-sm">
+                    Add
+                </button>
+            </form>
+
+            <!-- Todo List -->
+            <ul id="todo-list" class="space-y-3">
+                <!-- Items will be added here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const todoForm = document.getElementById('todo-form');
+        const todoInput = document.getElementById('todo-input');
+        const todoList = document.getElementById('todo-list');
+
+        let todos = JSON.parse(localStorage.getItem('minitools-todos')) || [];
+        // Migration: Add unique IDs to existing todos if they don't have them
+        todos = todos.map(todo => ({ ...todo, id: todo.id || Date.now() + Math.random() }));
+
+        function saveTodos() {
+            localStorage.setItem('minitools-todos', JSON.stringify(todos));
+        }
+
+        function renderTodos() {
+            // FLIP Animation: First
+            const items = todoList.querySelectorAll('li');
+            const firstRects = new Map();
+            items.forEach(item => {
+                const id = item.dataset.id;
+                firstRects.set(id, item.getBoundingClientRect());
+            });
+
+            // Sort todos: incomplete items first, then completed ones
+            todos.sort((a, b) => (a.completed === b.completed ? 0 : a.completed ? 1 : -1));
+            saveTodos();
+
+            todoList.innerHTML = '';
+            todos.forEach((todo) => {
+                const li = document.createElement('li');
+                li.dataset.id = todo.id;
+                li.draggable = true;
+                li.className = `flex items-center justify-between p-3 rounded-lg border group transition-all duration-300 cursor-grab active:cursor-grabbing ${todo.completed ? 'done-item' : 'bg-gray-50 border-gray-100'}`;
+
+                // Drag and Drop Events
+                li.addEventListener('dragstart', handleDragStart);
+                li.addEventListener('dragover', handleDragOver);
+                li.addEventListener('drop', handleDrop);
+                li.addEventListener('dragend', handleDragEnd);
+
+                li.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <input 
+                            type="checkbox" 
+                            ${todo.completed ? 'checked' : ''} 
+                            onchange="toggleTodo(${todo.id})"
+                            class="w-5 h-5 rounded text-sky-500 focus:ring-sky-500 border-gray-300 transition cursor-pointer"
+                        >
+                        <span class="text-gray-700 ${todo.completed ? 'done' : ''}">${todo.text}</span>
+                    </div>
+                    <button 
+                        onclick="deleteTodo(${todo.id})"
+                        class="p-1 text-gray-400 hover:text-red-500 transition-colors duration-200 opacity-0 group-hover:opacity-100"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                    </button>
+                `;
+                todoList.appendChild(li);
+            });
+
+            // FLIP Animation: Last, Invert, Play
+            const newItems = todoList.querySelectorAll('li');
+            newItems.forEach(item => {
+                const id = item.dataset.id;
+                const firstRect = firstRects.get(id);
+                if (firstRect) {
+                    const lastRect = item.getBoundingClientRect();
+                    const deltaY = firstRect.top - lastRect.top;
+
+                    if (deltaY !== 0) {
+                        // Invert
+                        item.style.transition = 'none';
+                        item.style.transform = `translateY(${deltaY}px)`;
+
+                        // Play
+                        requestAnimationFrame(() => {
+                            item.style.transition = 'all 0.3s ease-out';
+                            item.style.transform = '';
+                        });
+                    }
+                } else {
+                    // New item: simple fade-in
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(-10px)';
+                    requestAnimationFrame(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    });
+                }
+            });
+        }
+
+        function addTodo(e) {
+            e.preventDefault();
+            const text = todoInput.value.trim();
+            if (text) {
+                const id = Date.now() + Math.random(); // Unique ID for the todo
+                todos.push({ text, completed: false, id });
+                todoInput.value = '';
+                renderTodos();
+            }
+        }
+
+        function toggleTodo(id) {
+            const index = todos.findIndex(t => t.id === id);
+            if (index !== -1) {
+                todos[index].completed = !todos[index].completed;
+                renderTodos();
+            }
+        }
+
+        function deleteTodo(id) {
+            todos = todos.filter(t => t.id !== id);
+            renderTodos();
+        }
+
+        let draggedId = null;
+
+        function handleDragStart(e) {
+            draggedId = this.dataset.id;
+            // Delay adding the class so the browser's drag ghost stays opaque
+            setTimeout(() => {
+                this.classList.add('dragging');
+            }, 0);
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const targetId = this.dataset.id;
+            if (draggedId === targetId) return;
+
+            const fromIndex = todos.findIndex(t => t.id.toString() === draggedId.toString());
+            const toIndex = todos.findIndex(t => t.id.toString() === targetId.toString());
+
+            if (fromIndex !== -1 && toIndex !== -1) {
+                const [movedItem] = todos.splice(fromIndex, 1);
+                todos.splice(toIndex, 0, movedItem);
+                renderTodos();
+            }
+        }
+
+        function handleDragEnd() {
+            this.classList.remove('dragging');
+            draggedId = null;
+        }
+
+        todoForm.addEventListener('submit', addTodo);
+        renderTodos();
+    </script>
+</body>
+
+</html>

@@ -16,3 +16,13 @@ In minitools.html, can you add a new card called "Sharpe to Prob(P&L > 0)", it c
 
 
 In minitools.html, can you add a new card called "National Holidays", it should jump to a new page, and show the next 10 US national holiday dates. In the new page, please list the next 10 United State national holidays: date YYYYMMDD and the day of week, and how many days it is from today. 
+
+
+Can you create a new card in minitools.html called "Tiny LLM", it should jump to a new page and allow user to chat with a tiny LLM. 
+
+
+Can you create a new card in minitools.html called "Todo List", it should jump to a new page and allow user to add and remove items from a todo list.  
+On the new page:
+1. on the top, there is an input box and a button. If the user clicks the button (or hits enter), it will add the input box content to the todo list. 
+2. below the input box, there is a list of todo items. Each item has a checkbox and a delete button. The delete button will remove the item from the todo list. The checkbox will mark the item as done. If the item is done, it should be striked out. 
+
