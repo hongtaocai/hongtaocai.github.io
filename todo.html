@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List - MiniTool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .done {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white text-gray-800 p-4 shadow-sm">
+        <div class="container mx-auto">
+            <a href="./minitools.html" class="hover:text-gray-600 flex items-center font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+                        clip-rule="evenodd" />
+                </svg>
+                Back to MiniTool
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8 max-w-md">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Todo List</h1>
+
+        <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
+            <!-- Add Todo Form -->
+            <form id="todo-form" class="flex gap-2 mb-6">
+                <input type="text" id="todo-input"
+                    class="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition bg-white"
+                    placeholder="Add a new task..." required>
+                <button type="submit"
+                    class="px-4 py-2 bg-sky-500 text-white font-medium rounded-lg hover:bg-sky-600 transition duration-200 shadow-sm">
+                    Add
+                </button>
+            </form>
+
+            <!-- Todo List -->
+            <ul id="todo-list" class="space-y-3">
+                <!-- Items will be added here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const todoForm = document.getElementById('todo-form');
+        const todoInput = document.getElementById('todo-input');
+        const todoList = document.getElementById('todo-list');
+
+        let todos = JSON.parse(localStorage.getItem('minitools-todos')) || [];
+
+        function saveTodos() {
+            localStorage.setItem('minitools-todos', JSON.stringify(todos));
+        }
+
+        function renderTodos() {
+            todoList.innerHTML = '';
+            todos.forEach((todo, index) => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100 group transition-all duration-200';
+
+                li.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <input 
+                            type="checkbox" 
+                            ${todo.completed ? 'checked' : ''} 
+                            onchange="toggleTodo(${index})"
+                            class="w-5 h-5 rounded text-sky-500 focus:ring-sky-500 border-gray-300 transition cursor-pointer"
+                        >
+                        <span class="text-gray-700 ${todo.completed ? 'done' : ''}">${todo.text}</span>
+                    </div>
+                    <button 
+                        onclick="deleteTodo(${index})"
+                        class="p-1 text-gray-400 hover:text-red-500 transition-colors duration-200 opacity-0 group-hover:opacity-100"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                    </button>
+                `;
+                todoList.appendChild(li);
+            });
+        }
+
+        function addTodo(e) {
+            e.preventDefault();
+            const text = todoInput.value.trim();
+            if (text) {
+                todos.push({ text, completed: false });
+                todoInput.value = '';
+                saveTodos();
+                renderTodos();
+            }
+        }
+
+        function toggleTodo(index) {
+            todos[index].completed = !todos[index].completed;
+            saveTodos();
+            renderTodos();
+        }
+
+        function deleteTodo(index) {
+            todos.splice(index, 1);
+            saveTodos();
+            renderTodos();
+        }
+
+        todoForm.addEventListener('submit', addTodo);
+        renderTodos();
+    </script>
+</body>
+
+</html>
