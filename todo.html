@@ -8,8 +8,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .done {
-            text-decoration: line-through;
-            color: #9ca3af;
+            color: #94a3b8 !important;
+        }
+
+        .done-item {
+            background-color: #f1f5f9 !important;
+            border-color: #e2e8f0 !important;
+        }
+
+        .dragging {
+            opacity: 0.5;
+            background-color: #e2e8f0;
+            cursor: grabbing;
         }
     </style>
 </head>
@@ -59,29 +69,51 @@
         const todoList = document.getElementById('todo-list');
 
         let todos = JSON.parse(localStorage.getItem('minitools-todos')) || [];
+        // Migration: Add unique IDs to existing todos if they don't have them
+        todos = todos.map(todo => ({ ...todo, id: todo.id || Date.now() + Math.random() }));
 
         function saveTodos() {
             localStorage.setItem('minitools-todos', JSON.stringify(todos));
         }
 
         function renderTodos() {
+            // FLIP Animation: First
+            const items = todoList.querySelectorAll('li');
+            const firstRects = new Map();
+            items.forEach(item => {
+                const id = item.dataset.id;
+                firstRects.set(id, item.getBoundingClientRect());
+            });
+
+            // Sort todos: incomplete items first, then completed ones
+            todos.sort((a, b) => (a.completed === b.completed ? 0 : a.completed ? 1 : -1));
+            saveTodos();
+
             todoList.innerHTML = '';
-            todos.forEach((todo, index) => {
+            todos.forEach((todo) => {
                 const li = document.createElement('li');
-                li.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100 group transition-all duration-200';
+                li.dataset.id = todo.id;
+                li.draggable = true;
+                li.className = `flex items-center justify-between p-3 rounded-lg border group transition-all duration-300 cursor-grab active:cursor-grabbing ${todo.completed ? 'done-item' : 'bg-gray-50 border-gray-100'}`;
+
+                // Drag and Drop Events
+                li.addEventListener('dragstart', handleDragStart);
+                li.addEventListener('dragover', handleDragOver);
+                li.addEventListener('drop', handleDrop);
+                li.addEventListener('dragend', handleDragEnd);
 
                 li.innerHTML = `
                     <div class="flex items-center gap-3">
                         <input 
                             type="checkbox" 
                             ${todo.completed ? 'checked' : ''} 
-                            onchange="toggleTodo(${index})"
+                            onchange="toggleTodo(${todo.id})"
                             class="w-5 h-5 rounded text-sky-500 focus:ring-sky-500 border-gray-300 transition cursor-pointer"
                         >
                         <span class="text-gray-700 ${todo.completed ? 'done' : ''}">${todo.text}</span>
                     </div>
                     <button 
-                        onclick="deleteTodo(${index})"
+                        onclick="deleteTodo(${todo.id})"
                         class="p-1 text-gray-400 hover:text-red-500 transition-colors duration-200 opacity-0 group-hover:opacity-100"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -91,29 +123,94 @@
                 `;
                 todoList.appendChild(li);
             });
+
+            // FLIP Animation: Last, Invert, Play
+            const newItems = todoList.querySelectorAll('li');
+            newItems.forEach(item => {
+                const id = item.dataset.id;
+                const firstRect = firstRects.get(id);
+                if (firstRect) {
+                    const lastRect = item.getBoundingClientRect();
+                    const deltaY = firstRect.top - lastRect.top;
+
+                    if (deltaY !== 0) {
+                        // Invert
+                        item.style.transition = 'none';
+                        item.style.transform = `translateY(${deltaY}px)`;
+
+                        // Play
+                        requestAnimationFrame(() => {
+                            item.style.transition = 'all 0.3s ease-out';
+                            item.style.transform = '';
+                        });
+                    }
+                } else {
+                    // New item: simple fade-in
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(-10px)';
+                    requestAnimationFrame(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    });
+                }
+            });
         }
 
         function addTodo(e) {
             e.preventDefault();
             const text = todoInput.value.trim();
             if (text) {
-                todos.push({ text, completed: false });
+                const id = Date.now() + Math.random(); // Unique ID for the todo
+                todos.push({ text, completed: false, id });
                 todoInput.value = '';
-                saveTodos();
                 renderTodos();
             }
         }
 
-        function toggleTodo(index) {
-            todos[index].completed = !todos[index].completed;
-            saveTodos();
+        function toggleTodo(id) {
+            const index = todos.findIndex(t => t.id === id);
+            if (index !== -1) {
+                todos[index].completed = !todos[index].completed;
+                renderTodos();
+            }
+        }
+
+        function deleteTodo(id) {
+            todos = todos.filter(t => t.id !== id);
             renderTodos();
         }
 
-        function deleteTodo(index) {
-            todos.splice(index, 1);
-            saveTodos();
-            renderTodos();
+        let draggedId = null;
+
+        function handleDragStart(e) {
+            draggedId = this.dataset.id;
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const targetId = this.dataset.id;
+            if (draggedId === targetId) return;
+
+            const fromIndex = todos.findIndex(t => t.id.toString() === draggedId.toString());
+            const toIndex = todos.findIndex(t => t.id.toString() === targetId.toString());
+
+            if (fromIndex !== -1 && toIndex !== -1) {
+                const [movedItem] = todos.splice(fromIndex, 1);
+                todos.splice(toIndex, 0, movedItem);
+                renderTodos();
+            }
+        }
+
+        function handleDragEnd() {
+            this.classList.remove('dragging');
+            draggedId = null;
         }
 
         todoForm.addEventListener('submit', addTodo);

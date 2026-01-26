@@ -25,3 +25,4 @@ Can you create a new card in minitools.html called "Todo List", it should jump t
 On the new page:
 1. on the top, there is an input box and a button. If the user clicks the button (or hits enter), it will add the input box content to the todo list. 
 2. below the input box, there is a list of todo items. Each item has a checkbox and a delete button. The delete button will remove the item from the todo list. The checkbox will mark the item as done. If the item is done, it should be striked out. 
+
