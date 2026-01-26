@@ -17,9 +17,16 @@
         }
 
         .dragging {
-            opacity: 0.5;
-            background-color: #e2e8f0;
+            opacity: 0.2;
             cursor: grabbing;
+        }
+
+        .drag-ghost {
+            opacity: 1 !important;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            background-color: white !important;
+            border-color: #e2e8f0 !important;
+            border-radius: 0.5rem;
         }
     </style>
 </head>
@@ -184,7 +191,10 @@
 
         function handleDragStart(e) {
             draggedId = this.dataset.id;
-            this.classList.add('dragging');
+            // Delay adding the class so the browser's drag ghost stays opaque
+            setTimeout(() => {
+                this.classList.add('dragging');
+            }, 0);
             e.dataTransfer.effectAllowed = 'move';
         }
 
